@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel de monitoreo</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <main class="dashboard-container">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Panel de monitoreo</h1>
+
+                <p>
+                    Sistema de monitoreo de signos vitales
+                </p>
+            </div>
+
+            <button id="logoutButton">
+                Cerrar sesión
+            </button>
+
+        </header>
+
+
+        <section class="patient-card">
+
+            <h2>Adulto mayor monitoreado</h2>
+
+            <p id="patientName">
+                Cargando información...
+            </p>
+
+        </section>
+
+        <section class="system-status-card" id="systemStatusCard">
+
+    <div>
+        <h2 id="systemStatusTitle">
+            Estado del sistema
+        </h2>
+
+        <p id="systemStatusMessage">
+            Comprobando información...
+        </p>
+    </div>
+
+</section>
+<section class="patient-info-card">
+
+    <h2>Información del paciente</h2>
+
+    <div class="patient-info-grid">
+
+        <div class="patient-info-item">
+            <span>Nombre completo</span>
+            <strong id="patientFullName">--</strong>
+        </div>
+
+        <div class="patient-info-item">
+            <span>Fecha de nacimiento</span>
+            <strong id="patientBirthDate">--</strong>
+        </div>
+
+        <div class="patient-info-item">
+            <span>Edad</span>
+            <strong id="patientAge">--</strong>
+        </div>
+
+        <div class="patient-info-item">
+            <span>Teléfono</span>
+            <strong id="patientPhone">--</strong>
+        </div>
+
+        <div class="patient-info-item">
+            <span>Correo electrónico</span>
+            <strong id="patientEmail">--</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="emergency-contacts-card">
+
+    <h2>Contactos de emergencia</h2>
+
+    <p class="emergency-contacts-description">
+        Personas registradas para recibir atención ante una situación de alerta.
+    </p>
+
+    <div id="emergencyContactsContainer">
+        <p>Cargando contactos...</p>
+    </div>
+
+</section>
+
+<section class="device-info-card">
+
+    <h2>Información del brazalete</h2>
+
+    <div class="device-info-grid">
+
+        <div class="device-info-item">
+            <span>Nombre del dispositivo</span>
+            <strong id="deviceName">--</strong>
+        </div>
+
+        <div class="device-info-item">
+            <span>Modelo</span>
+            <strong id="deviceModel">--</strong>
+        </div>
+
+        <div class="device-info-item">
+            <span>Identificador</span>
+            <strong id="deviceIdentifier">--</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+        <section class="vitals-container">
+
+<div class="vital-card">
+
+    <h3>Frecuencia cardíaca</h3>
+
+    <p class="vital-value" id="heartRateValue">
+        -- BPM
+    </p>
+
+    <p class="vital-status" id="heartRateStatus">
+        Sin información
+    </p>
+    <p class="vital-time" id="lastMeasurementTime">
+    Última medición: --
+</p>
+
+</div>
+
+
+  <div class="vital-card">
+
+    <h3>SpO₂</h3>
+
+    <p class="vital-value" id="spo2Value">
+        -- %
+    </p>
+
+    <p class="vital-status" id="spo2Status">
+        Sin información
+    </p>
+
+</div>
+
+
+<div class="vital-card">
+
+    <h3>Ubicación</h3>
+
+    <p class="vital-value" id="locationValue">
+        --, --
+    </p>
+
+    <a
+        id="locationButton"
+        class="location-button"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Ver ubicación
+    </a>
+
+</div>
+
+</section>
+
+
+<section class="history-card">
+
+    <h2>Historial semanal</h2>
+
+    <p class="history-description">
+        Mediciones registradas durante los últimos 7 días.
+    </p>
+    <div class="weekly-summary">
+
+    <div class="summary-card">
+        <h3>Mediciones</h3>
+        <p id="totalMeasurements">--</p>
+    </div>
+
+    <div class="summary-card">
+        <h3>BPM promedio</h3>
+        <p id="averageHeartRate">--</p>
+    </div>
+
+    <div class="summary-card">
+        <h3>SpO₂ promedio</h3>
+        <p id="averageSpo2">--</p>
+    </div>
+
+    <div class="summary-card">
+        <h3>Alertas</h3>
+        <p id="totalAlerts">--</p>
+    </div>
+
+</div>
+<div class="weekly-chart-container">
+
+    <h3>Comportamiento semanal</h3>
+
+    <canvas id="weeklyChart"></canvas>
+
+</div>
+
+    <div class="history-table-container">
+
+        <table class="history-table">
+
+            <thead>
+                <tr>
+                    <th>Fecha y hora</th>
+                    <th>BPM</th>
+                    <th>SpO₂</th>
+                    <th>Ubicación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody id="historyTableBody">
+
+                <tr>
+                    <td colspan="5">
+                        Cargando historial...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<section class="alerts-card">
+    <h2>Historial de alertas</h2>
+
+    <p class="alerts-description">
+        Alertas registradas durante los últimos 7 días.
+    </p>
+
+    <div class="alerts-table-container">
+        <table class="alerts-table">
+            <thead>
+                <tr>
+                    <th>Fecha y hora</th>
+                    <th>Tipo de alerta</th>
+                    <th>Valor detectado</th>
+                    <th>Umbral</th>
+                </tr>
+            </thead>
+
+            <tbody id="alertsTableBody">
+                <tr>
+                    <td colspan="4">
+                        Cargando alertas...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section class="settings-card">
+    <h2>Configuración de umbrales</h2>
+
+    <p class="settings-description">
+        Ajusta los valores utilizados para determinar cuándo se genera una alerta.
+    </p>
+
+    <div class="settings-grid">
+
+        <div class="setting-item">
+            <label for="minHeartRate">
+                BPM mínimo
+            </label>
+
+            <input
+                type="number"
+                id="minHeartRate"
+                min="30"
+                max="200"
+            >
+        </div>
+
+        <div class="setting-item">
+            <label for="maxHeartRate">
+                BPM máximo
+            </label>
+
+            <input
+                type="number"
+                id="maxHeartRate"
+                min="30"
+                max="200"
+            >
+        </div>
+
+        <div class="setting-item">
+            <label for="minSpo2">
+                SpO₂ mínima (%)
+            </label>
+
+            <input
+                type="number"
+                id="minSpo2"
+                min="50"
+                max="100"
+            >
+        </div>
+
+    </div>
+
+    <button
+        type="button"
+        id="saveThresholdsButton"
+        class="save-settings-button"
+    >
+        Guardar configuración
+    </button>
+
+    <p id="settingsMessage"></p>
+</section>
+
+    </main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
