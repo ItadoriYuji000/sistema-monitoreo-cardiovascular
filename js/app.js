@@ -673,7 +673,8 @@ const { data: contactos, error: contactosError } =
         .select(`
             nombre,
             parentesco,
-            telefono
+            telefono,
+            correo
         `)
         .eq('id_persona', idPersona);
 
@@ -715,11 +716,12 @@ if (contactosError) {
             contactoElement.className =
                 'emergency-contact-item';
 
-            contactoElement.innerHTML = `
-                <strong>${contacto.nombre}</strong>
-                <span>Parentesco: ${contacto.parentesco}</span>
-                <span>Teléfono: ${contacto.telefono}</span>
-            `;
+contactoElement.innerHTML = `
+    <strong>${contacto.nombre}</strong>
+    <span>Parentesco: ${contacto.parentesco}</span>
+    <span>Teléfono: ${contacto.telefono}</span>
+    <span>Correo: ${contacto.correo}</span>
+`;
 
             emergencyContactsContainer.appendChild(
                 contactoElement
